@@ -23,9 +23,9 @@ It is tested and able to move the Turtlebot3 from a a simple gesture to move the
     $ roscd && cd ../src
     $ git clone https://github.com/danialrahman/motion_kinect.git
     ```
-  - Change `TURTLEBOT_IP` & `REMOTE_IP` variables in `kinect_t3_motion.sh`
+  - Change `TURTLEBOT_IP` & `REMOTE_IP` variables in `/launch/kinect_t3_motion.sh`
   
-  - Source setup.bash to link motion_kinect and NiTE to .ros directories 
+  - Source setup.bash in the `motion_kinect` directory to link the base directory and NiTE to .ros directories 
     ```bash
     $ source setup.bash
     ```
