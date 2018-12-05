@@ -1,13 +1,21 @@
-# ros-motion_kinect
+# Motion Kinectic
 Moving a ROS Turtlebot3 using KinectV2 skeleton data.
 
 It is tested and able to move the Turtlebot3 from a a simple gesture to move the Turtlebot3 foward, rotate left and right by reading the tf position published by the kinect_tracker. Movement of the robot are published using cmd_vel to ROS robots.
 
 ## Installation
 
-- [Install kinect2_tracker](https://github.com/mcgi5sr2/kinect2_tracker)
-  - Follow through all the installation @ [https://github.com/mcgi5sr2/kinect2_tracker](https://github.com/mcgi5sr2/kinect2_tracker)
-  - Make sure you have installed [libfreenet2](https://github.com/OpenKinect/libfreenect2/), [NiTE2 & OpenNI2](https://autostudentsite.wordpress.com/2017/05/18/running-and-building-nite2-samples-for-kinect-v2/) and all the dependencies
+- [Install libfreenect2](https://github.com/OpenKinect/libfreenect2/)
+  - Make sure to install all the optional stuff, including **OpenCL** and **OpenNI2**
+  - When you build the library, do not follow the instructions there, instead run
+    ```bash
+    mkdir build && cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr/
+    make
+    sudo make install
+    ```
+
+
   
 - [Install motion_kinect](https://github.com/danialrahman/motion_kinect)
   - Clone motion_kinect to catkin_ws/src
@@ -17,20 +25,18 @@ It is tested and able to move the Turtlebot3 from a a simple gesture to move the
     ```
   - Change `TURTLEBOT_IP` & `REMOTE_IP` variables in `kinect_t3_motion.sh`
   
-  - Link motion_kinect directory to .ros
+  - Source setup.bash to link motion_kinect and NiTE to .ros directories 
     ```bash
-    $ roscd motion_kinect
-    $ sudo ln -s "$(pwd)" ~/.ros/motion_kinect
+    $ source setup.bash
     ```
   - Build
     ```bash
     $ roscd && cd ../
-    $ catkin_make
+    $ catkin_make -j8
     ```
 
 ## Turtlebot3 Launch
 - Launch `turtlebot3_motion`
-
   ```bash
   $ roslaunch motion_kinect turtlebot3_motion.launch
   ```
@@ -41,5 +47,6 @@ It is tested and able to move the Turtlebot3 from a a simple gesture to move the
     - `Left hand raised:` Turn left
     - `Right hand raised:` Turn right
     - `Both left and right hand raised:` Move foward
+    - `Cross hand:` Terminate
     
    - Press 0: Quit ROS launch and terminate RVIZ
