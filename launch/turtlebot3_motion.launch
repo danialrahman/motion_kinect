@@ -1,0 +1,11 @@
+  <launch>
+<arg name="tracker_name" default="kinect" />
+
+	<node pkg="motion_kinect" type="motion_kinect_node" name="motion_kinect_node2">
+		<param name="tf_prefix" value="$(arg tracker_name)" />
+    		<param name="relative_frame" value="/$(arg tracker_name)_camera_frame" />
+	</node>
+
+	<node pkg="tf" type="static_transform_publisher" name="kinect_to_odom" args="0 0 0 1.5708 0 1.5708 /kinect_link /$(arg tracker_name)_camera_frame 50"/>
+    <node pkg="motion_kinect" type="kinect_t3_motion.sh" name="turtlebot3_motion" output="screen"/>
+  </launch>

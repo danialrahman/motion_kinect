@@ -1,0 +1,3 @@
+  <launch>
+    <node pkg="motion_kinect" type="tf_reader.py" name="tf_reader" output="screen"/>
+  </launch>
