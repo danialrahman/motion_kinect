@@ -36,6 +36,7 @@ It is tested and able to move the Turtlebot3 from a a simple gesture to move the
     ```
 
 ## Turtlebot3 Launch
+- Switch on Turtlebot3 and make sure it can be access by the remote PC through SSH
 - Launch `turtlebot3_motion`
   ```bash
   $ roslaunch motion_kinect turtlebot3_motion.launch
