@@ -1,4 +1,4 @@
-# Motion Kinectic
+# Motion Kinect
 Moving a ROS Turtlebot3 using KinectV2 skeleton data.
 
 It is tested and able to move the Turtlebot3 from a a simple gesture to move the Turtlebot3 foward, rotate left and right by reading the tf position published by the kinect_tracker. Movement of the robot are published using cmd_vel to ROS robots.
